@@ -1,4 +1,4 @@
-1. Compare pub_sub vs server_client?
+1. The different between pub_sub vs server_client?
 - Pubsub:
   + Có xu hướng dành cho các mục đích khác nhau: bạn subscribe thứ gì đó, xử lí nó và publish nó.
   + Thường ở một tỉ lệ khá cố định. Bạn có thể đăng kí nhiều thứ và xuất bản nhiều thứ. 
@@ -12,3 +12,5 @@
     Trong pubsub nếu người dùng a và b đưa ra yêu cầu và bạn xử lí chúng và xuất ra hai phản hổi, làm thế nào để
 họ biết câu trả lời nào dành cho a và câu tl nào dành cho b.
     Đó là ý nghĩa của ser_cli: đưa ra yêu cầu rõ ràng, trong khi pubsub 
+
+2. 
