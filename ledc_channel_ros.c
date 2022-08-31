@@ -11,7 +11,7 @@ void setupROS(){
   
   // Create node
   rcl_node_t node;
-  RCCHECK(rclc_node_init_default(&node, "ros_esp32cam_diffdrive", "". &support));
+  RCCHECK(rclc_node_init_default(&node, "ros_esp32_diffdrive", "". &support));
   
   // Create subscriber
   rcl_subsciption_t subscriber;
