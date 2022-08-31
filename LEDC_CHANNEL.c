@@ -34,36 +34,36 @@ ledc_timer_config(&ledc_timer);
 
 // Configure 4 PWM channels and assign output pins
 ledc_channel_config_t ledc_channel[4] = {
-	{
-		.channel	  = PWM_LEFT_FORWARD,
-		.duty		    = 0,
-		.gpio_num	  = PIN_LEFT_FORWARD,
-		.speed_mode	= PWM_MODE,
-		.hpoint		  = 0,
+  {
+    .channel	  = PWM_LEFT_FORWARD,
+    .duty		    = 0,
+    .gpio_num	  = PIN_LEFT_FORWARD,
+    .speed_mode	= PWM_MODE,
+    .hpoint		  = 0,
     .timer_sel  = LEDC_TIMER_1
 	},
   {
-		.channel	  = PWM_LEFT_BACKWARD,
-		.duty		    = 0,
-		.gpio_num	  = PIN_LEFT_BACKWARD,
-		.speed_mode	= PWM_MODE,
-		.hpoint		  = 0,
+    .channel	  = PWM_LEFT_BACKWARD,
+    .duty		    = 0,
+    .gpio_num	  = PIN_LEFT_BACKWARD,
+    .speed_mode	= PWM_MODE,
+    .hpoint		  = 0,
     .timer_sel  = LEDC_TIMER_1
 	},
   {
-		.channel	  = PWM_RIGHT_FORWARD,
-		.duty		    = 0,
-		.gpio_num	  = PIN_RIGHT_FORWARD,
-		.speed_mode	= PWM_MODE,
-		.hpoint		  = 0,
+    .channel	  = PWM_RIGHT_FORWARD,
+    .duty		    = 0,
+    .gpio_num	  = PIN_RIGHT_FORWARD,
+    .speed_mode	= PWM_MODE,
+    .hpoint		  = 0,
     .timer_sel  = LEDC_TIMER_1
 	},
   {
-		.channel	  = PWM_RIGHT_BACKWARD,
-		.duty		    = 0,
-		.gpio_num	  = PIN_RIGHT_BACKWARD,
-		.speed_mode	= PWM_MODE,
-		.hpoint		  = 0,
+    .channel	  = PWM_RIGHT_BACKWARD,
+    .duty		    = 0,
+    .gpio_num	  = PIN_RIGHT_BACKWARD,
+    .speed_mode	= PWM_MODE,
+    .hpoint		  = 0,
     .timer_sel  = LEDC_TIMER_1 
 	},
 };
