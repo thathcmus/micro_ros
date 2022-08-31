@@ -26,7 +26,7 @@ void setupROS(){
   RCCHECK(rclc_timer_init_default(
     &timer,
     &support,
-    RCL_MS_T0_NS(FRAME_TIME),
+    RCL_MS_TO_NS(FRAME_TIME),
     timer_callback));
   
   // Create executor
@@ -36,7 +36,7 @@ void setupROS(){
   RCCHECK(rclc_executor_add_timer(&executor, &timer));
   
   while(1){
-    rclc_executor_spin_some(&executor, RCL_MS_T0_NS(SLEEP_TIME));
+    rclc_executor_spin_some(&executor, RCL_MS_TO_NS(SLEEP_TIME));
     usleep(SLEEP_TIME*1000);
   }
   
