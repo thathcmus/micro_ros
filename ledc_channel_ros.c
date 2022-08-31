@@ -3,7 +3,7 @@
 
 void setupROS(){
   // Micro ROS
-  rcl_allocator_t allocator = rcll_get_default_allocator();
+  rcl_allocator_t allocator = rclc_get_default_allocator();
   rclc_support_t support;
   
   // Create init_options
