@@ -80,15 +80,16 @@ std_msgs__msg__String sub_msg;
 /*
   The subsription callback casts the message parameter /msgin/ to an equivalent
   type of std_msgs::msg::String in C and prints out the received message
-  > Lenh goi lai subscription truyen tham so tin nhan MSGIN thanh mot kieu tuong tu
+  > The_subscription_callback truyen tham so tin nhan MSGIN thanh mot kieu tuong tu
   std_msgs::msg::String trong C va in ra tin nhan da nhan.
 */
 void my_subscriber_callback(const void * msgin)
 {
   const std_msgs__msg__String *msg = (const std_msgs__msg__String *)msgin;
-  if(msg == NULL){
-    printf("Callback: msg NULL\n);}
-  else printf("Callback: I heard: %s\n", msg->data.data);
+  if(msg == NULL) printf("Callback: msg NULL\n);
+  else   printf("Callback: I heard: %s\n", msg->data.data);
 }
-
-// The timer callback publishers the message pub_msg with the publisher my_pub
+/*
+ The timer callback publishers the message pub_msg with the publisher my_pub
+ which is initialized later in main()
+*/
