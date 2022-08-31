@@ -64,7 +64,7 @@ ledc_channel_config_t ledc_channel[4] = {
 		.gpio_num	  = PIN_RIGHT_BACKWARD,
 		.speed_mode	= PWM_MODE,
 		.hpoint		  = 0,
-    .timer_sel  = LEDC_TIMER_1
+    .timer_sel  = LEDC_TIMER_1 
 	},
 };
 // Called
