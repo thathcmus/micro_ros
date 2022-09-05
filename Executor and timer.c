@@ -41,8 +41,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 
 // Cleaning up
 /* To destroy an initialized timer
-  rcl_timer_fini(&timer);
-*/
+rcl_timer_fini(&timer);
 
 //2. __EXECUTOR__
 /*
@@ -79,9 +78,11 @@ std_msgs__msg__String sub_msg;
 
 /*
   The subsription callback casts the message parameter /msgin/ to an equivalent
-  type of std_msgs::msg::String in C and prints out the received message
+  type of std_msgs::msg::String in C and prin
+  ts out the received message
   > The_subscription_callback truyen tham so tin nhan MSGIN thanh mot kieu tuong tu
   std_msgs::msg::String trong C va in ra tin nhan da nhan.
+  > Gửi tin nhắn và in ra tin nhắn
 */
 void my_subscriber_callback(const void * msgin)
 {
@@ -89,7 +90,25 @@ void my_subscriber_callback(const void * msgin)
   if(msg == NULL) printf("Callback: msg NULL\n);
   else   printf("Callback: I heard: %s\n", msg->data.data);
 }
+                         
 /*
- The timer callback publishers the message pub_msg with the publisher my_pub
- which is initialized later in main()
+   The_timer_callback sẽ publishes tin nhắn /pub_msg/ với publisher my_pub
+   cái mà sẽ được tạo ở main()
 */
+void my_timer_callback(rcl_timer_t * timer, int64_t last_call_time)
+{
+   rcl_ret_t rc;
+   UNUSED(last_call_time);
+   if(timer != NULL){
+      rc = rcl_publish(&my_pub, &pub_msg, NULL);
+      if(rc == RCL_RET_OK)
+         printf("Published message %s\n", pub_msg.data.data);
+      else
+         printf("Error in timer_callback: Message %s could not be published\n", pub_msg.data.data);
+   }
+   else
+      printf("Error in timer_callback: timer parameter is NULL\n");
+}
+
+// Main function
+int main(int argc, const char * argv
