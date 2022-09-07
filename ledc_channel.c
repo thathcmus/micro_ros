@@ -124,3 +124,4 @@ void timer_callback(rcl_timer_t *timer, int64_t last_call_timer){
   printf("%d, %d, %d, %d, %d, %d, %f, %f\n", pwmLeft,  left > 0, left < 0, pwmRight, right > 0, right < 0, left, right);
 }
 // Then map those values to PWM intensities. PWM_MOTOR_MAX = full speed, PWM_MOTOR_MIN = the minimal amount of power at which the motors begin moving.
+ 
