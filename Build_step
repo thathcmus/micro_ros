@@ -24,7 +24,7 @@ ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32
 #ros2 run micro_ros_setup configure_firmware.sh [PROJECT NAME] -t udp -i [LOCAL MACHINE IP ADDRESS] -p 8888
 ros2 run micro_ros_setup configure_firmware.sh int32_publisher -t udp -i 192.168.0.104 -p 8888
 ros2 run micro_ros_setup configure_firmware.sh int32_subscriber -t udp -i 192.168.0.104 -p 7777
-ros2 run micro_ros_setup configure_firmware.sh ros_esp32cam_diffdrive -t udp -i 192.168.0.117 -p 8888
+ros2 run micro_ros_setup configure_firmware.sh ros_esp32cam_diffdrive -t udp -i 192.168.43.121 -p 8888
 
 #Command to set your wifi credentials for ESP32
 ros2 run micro_ros_setup build_firmware.sh menuconfig
