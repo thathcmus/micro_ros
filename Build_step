@@ -1,0 +1,62 @@
+#Install Micro-ROS
+# Source the ROS 2 installation
+source /opt/ros/$ROS_DISTRO/setup.bash
+
+# Create a workspace and download the micro-ROS tools
+mkdir microros_ws
+cd microros_ws
+git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+
+# Update dependencies using rosdep
+sudo apt update && rosdep update
+rosdep install --from-path src --ignore-src -y
+
+# Install pip
+sudo apt-get install python3-pip
+
+# Build micro-ROS tools and source them
+colcon build
+source install/local_setup.bash
+
+#Creating a new firmware workspace for ESP32
+ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32
+
+#ros2 run micro_ros_setup configure_firmware.sh [PROJECT NAME] -t udp -i [LOCAL MACHINE IP ADDRESS] -p 8888
+ros2 run micro_ros_setup configure_firmware.sh int32_publisher -t udp -i 192.168.0.104 -p 8888
+ros2 run micro_ros_setup configure_firmware.sh int32_subscriber -t udp -i 192.168.0.104 -p 7777
+
+#Command to set your wifi credentials for ESP32
+ros2 run micro_ros_setup build_firmware.sh menuconfig
+	#Go to the micro-ROS Transport Settings -> Wifi Configuration menu and fill your Wifi SSID and password
+	#Press S to save
+
+#Build firmware
+ros2 run micro_ros_setup build_firmware.sh
+
+#Flash firmware: Connect ESP32 vs laptop
+sudo su
+source /opt/ros/foxy/setup.bash
+source install/local_setup.bash
+ros2 run micro_ros_setup flash_firmware.sh
+sudo su - that
+
+
+#Creating the micro-ROS agent
+
+#Download micro-ROS-Agent packages
+ros2 run micro_ros_setup create_agent_ws.sh
+#Build step
+ros2 run micro_ros_setup build_agent.sh
+source install/local_setup.bash
+
+#Running the micro-ROS
+#Run a micro-ROS agent
+ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
+ros2 run micro_ros_agent micro_ros_agent udp4 --port 7777
+	Press the Reset Button on ESP32
+#Or
+docker run -it --rm --net=host microros/micro-ros-agent:foxy udp4 --port 8888 -v6
+
+#New terminal
+ros2 topic list
+ros2 topic echo /freertos_int32_publisher
